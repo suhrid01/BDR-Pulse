@@ -1,30 +1,21 @@
-# BDR Signal Prototype
+# BDR PULSE
 
-BDR Signal is a separate prototype project for Agora.io.
+BDR PULSE is a lightweight leadership dashboard for tracking BDR-sourced pipeline performance.
 
-It is intentionally not another CRM. Salesforce remains the source of truth. This app is the clean attribution layer that helps answer:
+It is designed as a clean companion layer around Salesforce, focused on:
 
-- Which accounts were sourced by which BDR
-- What revenue those sourced accounts represent in both MRR and ARR
-- What stage each opportunity is in
-- What usage and outreach context exists for the account
-- Which records are ready for AI-agent-assisted updates back into Salesforce
+- BDR portfolio coverage
+- Open MRR and ARR
+- Hot accounts
+- Stage summary
+- BDR ownership views
+- Account ledger tracking
 
-## Current prototype scope
+## Pages
 
-- Single-page frontend with browser persistence
-- BDR leaderboard based on sourced revenue
-- Pipeline board for account and opportunity tracking
-- Salesforce-linked account detail view
-- Agent workflow section showing future read, attribute, enrich, and write-back automation
-
-## Not in scope yet
-
-- Live Salesforce API integration
-- Contact enrichment provider connections
-- Outreach platform integrations
-- Authentication and role-based access
-- Background agent execution
+- `index.html` for the overview
+- `bdr-ownership.html` for BDR ownership
+- `account-ledger.html` for the account ledger
 
 ## Run locally
 
@@ -32,26 +23,10 @@ It is intentionally not another CRM. Salesforce remains the source of truth. Thi
 python3 -m http.server 4173
 ```
 
-Then open `http://localhost:4173/bdr-management-prototype/`
+Then open `http://localhost:4173/`.
 
-## What I observed from your live Salesforce
+## Notes
 
-Your logged-in Salesforce opportunity view already exposes the kind of data this system should consume:
-
-- Opportunity stage path
-- Account and opportunity IDs
-- Owner name
-- Potential MRR
-- ARR projection
-- Contact roles
-- Activity history
-- Usage links and company identifiers
-
-That means the right product direction is a companion system that reads and simplifies this data, not a replacement CRM.
-
-## Recommended next build phase
-
-- Create a backend service that reads Salesforce accounts, contacts, and opportunities
-- Add a BDR attribution model at both account and opportunity levels
-- Store MRR, ARR, stage history, outreach coverage, and usage snapshots
-- Add an approval queue for AI agents before they write back into Salesforce
+- Built as a static frontend prototype
+- Uses browser `localStorage` for lightweight state
+- Ready to deploy on Vercel as a static site
