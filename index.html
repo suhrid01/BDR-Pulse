@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Compact BDR leadership overview for tracking portfolio coverage, MRR, ARR, hot accounts, and stage summary."
+    />
+    <title>BDR PULSE</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <div class="ambient ambient-left"></div>
+      <div class="ambient ambient-right"></div>
+
+      <header class="topbar">
+        <div class="brand-block">
+          <h1>BDR PULSE</h1>
+        </div>
+        <div class="top-actions">
+          <nav class="page-nav" aria-label="Primary">
+            <a class="page-link is-active" href="./index.html">Overview</a>
+            <a class="page-link" href="./bdr-ownership.html">BDR Ownership</a>
+            <a class="page-link" href="./account-ledger.html">Account Ledger</a>
+          </nav>
+          <a class="top-link" href="#" aria-label="Open Salesforce workspace">Salesforce</a>
+        </div>
+      </header>
+
+      <section class="hero">
+        <section class="summary-card">
+          <div class="summary-header">
+            <div>
+              <h2>BDR Team Coverage</h2>
+            </div>
+            <div class="summary-side">
+              <span class="summary-chip" id="coverageLabel">0 records</span>
+              <span class="summary-updated">Updated <strong id="todayLabel">Loading...</strong></span>
+            </div>
+          </div>
+          <div class="summary-grid">
+            <article>
+              <span class="metric-value" id="leadCount">0</span>
+              <span class="metric-label">Leads</span>
+            </article>
+            <article>
+              <span class="metric-value" id="activeAccounts">0</span>
+              <span class="metric-label">Active accounts</span>
+            </article>
+            <article>
+              <span class="metric-value" id="openMrr">$0</span>
+              <span class="metric-label">Open MRR</span>
+            </article>
+            <article>
+              <span class="metric-value" id="openArr">$0</span>
+              <span class="metric-label">Open ARR</span>
+            </article>
+            <article>
+              <span class="metric-value" id="wonAccounts">0</span>
+              <span class="metric-label">Closed won</span>
+            </article>
+            <article>
+              <span class="metric-value" id="lostAccounts">0</span>
+              <span class="metric-label">Closed lost</span>
+            </article>
+          </div>
+        </section>
+      </section>
+
+      <main class="layout">
+        <section class="panel">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Hot Accounts</p>
+              <h2>Priority</h2>
+            </div>
+          </div>
+          <div id="hotAccounts" class="hot-accounts"></div>
+        </section>
+
+        <section class="panel panel-compact">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Stage Summary</p>
+              <h2>All accounts by stage</h2>
+            </div>
+          </div>
+          <div id="stageBoard" class="stage-board"></div>
+        </section>
+      </main>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
