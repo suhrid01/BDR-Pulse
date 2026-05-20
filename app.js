@@ -233,20 +233,20 @@ function populateSelect(select, values, selectedValue, placeholder) {
 }
 
 function renderSummary() {
-  const visibleAccounts = getVisibleAccounts();
-  const visibleLeads = getVisibleLeads();
-  const activeAccounts = visibleAccounts.filter((account) => account.stage !== "Closed Lost");
-  const wonAccounts = visibleAccounts.filter((account) => account.stage === "Closed Won");
-  const lostAccounts = visibleAccounts.filter((account) => account.stage === "Closed Lost");
-  const openMrr = visibleAccounts
+  const allAccounts = state.accounts;
+  const allLeads = state.leads;
+  const activeAccounts = allAccounts.filter((account) => account.stage !== "Closed Lost");
+  const wonAccounts = allAccounts.filter((account) => account.stage === "Closed Won");
+  const lostAccounts = allAccounts.filter((account) => account.stage === "Closed Lost");
+  const openMrr = allAccounts
     .filter((account) => !["Closed Won", "Closed Lost"].includes(account.stage))
     .reduce((sum, account) => sum + account.mrr, 0);
-  const openArr = visibleAccounts
+  const openArr = allAccounts
     .filter((account) => !["Closed Won", "Closed Lost"].includes(account.stage))
     .reduce((sum, account) => sum + account.arr, 0);
 
-  elements.coverageLabel.textContent = `${visibleAccounts.length + visibleLeads.length} records in view`;
-  elements.leadCount.textContent = String(visibleLeads.length);
+  elements.coverageLabel.textContent = `${allAccounts.length + allLeads.length} records in view`;
+  elements.leadCount.textContent = String(allLeads.length);
   elements.activeAccounts.textContent = String(activeAccounts.length);
   elements.openMrr.textContent = formatCurrency(openMrr);
   elements.openArr.textContent = formatCurrency(openArr);
@@ -255,7 +255,7 @@ function renderSummary() {
 }
 
 function renderHotAccounts() {
-  const hotAccounts = getVisibleAccounts()
+  const hotAccounts = state.accounts
     .filter((account) => account.health === "Hot" && account.stage !== "Closed Lost")
     .sort((left, right) => right.arr - left.arr)
     .slice(0, 4);
